@@ -9,6 +9,7 @@ func TestIsMatch(t *testing.T) {
 		expected bool
 	}{
 		{"aaa", "a*a", true},
+		{"aaa", "a*", true},
 		{"aba", "a*a", false},
 		{"aab", "c*a*b", true},
 		{"ab", "a*", false},
