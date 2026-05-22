@@ -41,4 +41,4 @@ def check_limit(number):
 if __name__ == "__main__":
     solution = Solution()
 
-    print(solution.myAtoi("      -11919730356x")) # should print -12
+    print(solution.myAtoi("      -11919730356x")) # should print -2147483648

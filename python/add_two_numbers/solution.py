@@ -14,6 +14,18 @@ class ListNode:
             res+=str(t.val)
             t=t.next
         return res
+    
+    def __eq__(self, value):
+        if not isinstance(value, ListNode):
+            return False
+        t1 = self
+        t2 = value
+        while t1 and t2:
+            if t1.val != t2.val:
+                return False
+            t1 = t1.next
+            t2 = t2.next
+        return not t1 and not t2
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
