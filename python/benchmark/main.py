@@ -24,7 +24,7 @@ def benchmark(repeats=10):
 
             result = {
                 "time_avg_sec": statistics.mean(times),
-                "time_min_sec": min(times),
+                "time_ms_sec": min(times) / 100,
                 "peak_memory_kb": peak / 1024,
             }
 
