@@ -1,5 +1,5 @@
 from longest_nonrepeating_substring.solution import Solution
-from benchmark.main import benchmark
+from benchmark import benchmark
 
 
 class Benchmark:

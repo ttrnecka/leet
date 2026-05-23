@@ -1,6 +1,6 @@
 from add_two_numbers.solution import Solution, ListNode
 from add_two_numbers.test import createLinkedList
-from benchmark.main import benchmark
+from benchmark import benchmark
 
 
 class TestAddTwoNumbers:

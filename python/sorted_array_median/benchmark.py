@@ -1,5 +1,5 @@
 from sorted_array_median.solution import Solution
-from benchmark.main import benchmark
+from benchmark import benchmark
 
 
 class Benchmark:
