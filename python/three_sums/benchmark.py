@@ -8,9 +8,5 @@ class Benchmark:
     @benchmark(repeats=100)
     def test(self, nums):
         self.solution.threeSum(nums)
-    @benchmark(repeats=100)
-    def test2(self, nums):
-        self.solution.threeSum2(nums)
 
 print(Benchmark().test([-1,0,1,2,-1,-4]))
-print(Benchmark().test2([-1,0,1,2,-1,-4]))
