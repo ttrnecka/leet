@@ -25,6 +25,13 @@ class ListNode:
             res+=str(t.val)
             t=t.next
         return res
+    def __repr__(self):
+        t = self
+        res=""
+        while t:
+            res+=str(t.val)
+            t=t.next
+        return res
     
     def __eq__(self, value):
         if not isinstance(value, ListNode):
@@ -41,7 +48,7 @@ class ListNode:
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         q = []
-        r_head = copy.copy(head)
+        r_head = head
         if head is None:
             return None
         while head:
@@ -49,13 +56,23 @@ class Solution:
             if len(q) > n+1:
                 q.pop(0)
             head = head.next
-        if len(q) == n+1:
-            nl = q.pop(0)
-            nr = q.pop(1)
-            nl.next = nr
+
+
+        if len(q) > 2:
+            if n == len(q):
+                # removing first
+                r_head = q.pop(1)
+            else:
+                nl = q.pop(0)
+                nr = q.pop(1)
+                nl.next = nr
         # removing first Node, returning rest
-        elif len(q) == n and n > 1:
+        elif len(q) == 2 and n == 2:
             r_head = q.pop(1)
+        # removing last Node, returning head
+        elif len(q) == 2 and n == 1:
+            prev = q.pop(0)
+            prev.next = None
         else:
             return None
         return r_head
@@ -66,3 +83,5 @@ if __name__ == "__main__":
 
     l =  createList([1,2,3,4,5])
     print(solution.removeNthFromEnd(l,2))
+    l =  createList([1,2])
+    print(solution.removeNthFromEnd(l,1))

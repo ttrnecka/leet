@@ -21,6 +21,10 @@ class Test(unittest.TestCase):
         l =  createList([1,2])
         tl = createList([1])
         self.assertEqual(self.solution.removeNthFromEnd(l,1), tl)
+       
+        l =  createList([1,2,3])
+        tl = createList([2,3])
+        self.assertEqual(self.solution.removeNthFromEnd(l,3), tl)
 
 def createList(nums: List):
     first_node = None
