@@ -9,22 +9,19 @@ type ListNode struct {
 
 func (ln *ListNode) Equal(ln2 *ListNode) bool {
 	tmpln := ln
-	for tmpln != nil && ln2 != nil {
-		if tmpln.Val != ln2.Val {
+	for tmpln != nil || ln2 != nil {
+		if tmpln == nil || ln2 == nil || tmpln.Val != ln2.Val {
 			return false
 		}
 		tmpln = tmpln.Next
-		ln2 = ln.Next
+		ln2 = ln2.Next
 	}
-	if tmpln == nil && ln2 == nil {
-		return true
-	}
-	return false
+	return true
 }
 
-func (ln *ListNode) String() string {
+func (ln ListNode) String() string {
 	s := ""
-	tmp := ln
+	tmp := &ln
 	for tmp != nil {
 		s = fmt.Sprintf("%s%d", s, tmp.Val)
 		tmp = tmp.Next
@@ -33,6 +30,10 @@ func (ln *ListNode) String() string {
 }
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	if head == nil {
+		return nil
+	}
+
 	fast, slow := head, head
 
 	for range n {
