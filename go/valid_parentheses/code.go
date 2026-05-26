@@ -8,8 +8,8 @@ func isValid(s string) bool {
 		']': '[',
 		'}': '{',
 	}
-	for i := range len(s) - 1 {
-		if v, ok := pmap[s[i]]; ok {
+	for i := range len(s) {
+		if _, ok := pmap[s[i]]; ok {
 			if len(stack) == 0 {
 				return false
 			}
@@ -19,7 +19,7 @@ func isValid(s string) bool {
 				return false
 			}
 		} else {
-			stack = append(stack, v)
+			stack = append(stack, s[i])
 		}
 	}
 	return len(stack) == 0
