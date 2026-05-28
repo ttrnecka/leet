@@ -59,7 +59,7 @@ class Solution:
                 if not temp:
                     return dummy.next
             
-            for i in range(k // 2):
+            for i in range((k // 2) -1):
                 if i!=k-i-1:
                     hold[i].next = hold[k-i-1]
                     hold[k-i-1].next = hold[i]
