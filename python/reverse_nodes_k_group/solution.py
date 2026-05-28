@@ -57,7 +57,7 @@ class Solution:
                 hold[i]=temp.next
                 temp = temp.next
                 if not temp:
-                    break
+                    return dummy.next
             
             for i in range(k // 2):
                 if i!=k-i-1:
