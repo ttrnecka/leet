@@ -21,6 +21,9 @@ class Test(unittest.TestCase):
         l =  createList([1,2])
         tl = createList([2,1])
         self.assertEqual(self.solution.reverseKGroup(l, 2), tl)
+        l =  createList([1,2,3,4])
+        tl = createList([4,3,2,1])
+        self.assertEqual(self.solution.reverseKGroup(l, 4), tl)
 
 def createList(nums: List):
     first_node = None

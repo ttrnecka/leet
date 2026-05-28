@@ -21,17 +21,16 @@ class ListNode:
     def __str__(self):
         t = self
         res=""
-        while t:
+        i=0
+        while t and i<3:
             res+=str(t.val)
             t=t.next
+            i+=1
+        if i == 3 and t.next:
+            res+="..."
         return res
     def __repr__(self):
-        t = self
-        res=""
-        while t:
-            res+=str(t.val)
-            t=t.next
-        return res
+        return self.__str__()
     
     def __eq__(self, value):
         if not isinstance(value, ListNode):
@@ -47,28 +46,26 @@ class ListNode:
     
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        dummy = ListNode()
-        dummy.next = head
-        curr = dummy
-        while curr.next:
-            hold = [None] *k 
-            temp = curr
-            for i in range(k):
-                hold[i]=temp.next
+        dummy = ListNode(0, head)
+        group_prev = dummy
+        while True:
+            temp = group_prev
+            for _ in range(k):
                 temp = temp.next
                 if not temp:
                     return dummy.next
+            group_next = temp.next
+
+            prev, curr = group_next, group_prev.next
+
+            while curr != group_next:
+                next_node = curr.next
+                curr.next = prev
+                prev = curr
+                curr = next_node
             
-            for i in range((k // 2) -1):
-                if i!=k-i-1:
-                    hold[i].next = hold[k-i-1]
-                    hold[k-i-1].next = hold[i]
+            group_prev.next, group_prev = temp, group_prev.next
 
-            curr.next = hold[0]
-
-            curr = hold[k-1]
-
-        return dummy.next
                 
 
 if __name__ == "__main__":
@@ -78,3 +75,5 @@ if __name__ == "__main__":
     print(solution.reverseKGroup(l,2))
     l =  createList([1,2,3,4,5])
     print(solution.reverseKGroup(l,3))
+    l =  createList([1,2,3,4])
+    print(solution.reverseKGroup(l,4))
