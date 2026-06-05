@@ -4,8 +4,6 @@ class Solution:
     def bin_search(self,nums: List[int], target: int, shift: int) -> int:
         if len(nums) == 1 and nums[0] != target:
             return -1
-        if len(nums) == 0:
-            return -1
         mid = len(nums) // 2
         if nums[mid] == target:
             return shift + mid
@@ -18,8 +16,6 @@ class Solution:
         return self.bin_search(nums,target,shift+diff)
 
     def search(self, nums: List[int], target: int) -> int:
-        if len(nums) == 1 and nums[0] != target:
-            return -1
         mid = len(nums) // 2
         if nums[mid] == target:
             return mid
