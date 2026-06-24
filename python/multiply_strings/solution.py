@@ -6,14 +6,14 @@ class Solution:
         
         result = [0] * (len(num1)+len(num2))
 
-        n1 = num1.encode()
-        n2 = num2.encode()
-        zero = "0".encode()[0]
+        n1 = num1
+        n2 = num2
+        zero = ord("0")
 
         for i in range(len(n1)-1,-1,-1):
-            v1 = n1[i] - zero
+            v1 = ord(n1[i]) - zero
             for j in range(len(n2)-1,-1,-1):
-                v2 = n2[j] - zero
+                v2 = ord(n2[j]) - zero
 
                 result[i+j+1] += (v1 * v2)
                 if result[i+j+1] >= 10:
